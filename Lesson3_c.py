@@ -43,7 +43,7 @@ x = 0
 while x < WIDTH:
     w = random.randint(70, 120)
     h = random.randint(230, 430)
-    background.append((x, w, h))
+    foreground.append((x, w, h))
     x += w + random.randint(5, 15)
 
 window_state = []
@@ -88,7 +88,7 @@ while running:
     pygame.draw.line(screen, PINK, (0, horizon), (WIDTH, horizon), 3)
 
     for i in range(0, WIDTH + 60, 30):
-        pygame.draw.line(screen, BLUE, (WIDTH // 2, horizon), (i, WIDTH), 1)
+        pygame.draw.line(screen, BLUE, (WIDTH // 2, horizon), (i, HEIGHT), 1)
 
     for bx, bw, bh in background:
         pygame.draw.rect(screen, (12, 12, 22), (bx, HEIGHT - bh, bw, bh))
@@ -107,11 +107,11 @@ while running:
 
         pygame.draw.rect(screen, CYAN, (bx, top, bw, bh), 2)
 
-        for wy, wy, on in window_state[idx]:
+        for wx, wy, on in window_state[idx]:
             if on:
                 pygame.draw.rect(screen, PINK, (wx, wy, 8, 12))
 
-    font = pygame.font.SysFont("Ariel", 42, True)  # True means bold text
+    font = pygame.font.SysFont("Arial", 42, True)  # True means bold text
 
     title = font.render("NEON WIREFRAME CITY", True, PINK)  # True makes text smoother
 
