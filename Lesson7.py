@@ -123,7 +123,7 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
             yellow_bullets.remove(bullet)
 
     for bullet in red_bullets:
-        bullet.x += BULLET_VEL
+        bullet.x -= BULLET_VEL
 
         if yellow.colliderect(bullet):
             pygame.event.post(pygame.event.Event(YELLOW_HIT))
@@ -182,9 +182,7 @@ def main():
                     BULLET_FIRE_SOUND.play()
 
                 if event.key == pygame.K_RMETA and len(red_bullets) < MAX_BULLETS:
-                    bullet = pygame.Rect(
-                        red.x + red.width, red.y + red.height // 2 - 2, 10, 5
-                    )
+                    bullet = pygame.Rect(red.x, red.y + red.height // 2 - 2, 10, 5)
 
                     red_bullets.append(bullet)
                     BULLET_FIRE_SOUND.play()
